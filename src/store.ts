@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { loadState, saveState } from "./services/persistence";
 
 import { questionsSlice } from "./features/admin/questionsSlice";
-import { gameSlice } from "./features/game/gameSlice";
+import { gameSlice, initialState as gameInitialState } from "./features/game/gameSlice";
 
 const QUESTIONS_KEY = 'questions';
 const GAME_KEY = 'game';
@@ -17,7 +17,7 @@ export const store = configureStore({
     },
     preloadedState: {
         questions: persistedQuestions || [],
-        game: persistedGame || [],
+        game: persistedGame || gameInitialState,
     },
 });
 
@@ -25,4 +25,7 @@ store.subscribe(() => {
     saveState(QUESTIONS_KEY, store.getState().questions);
     saveState(GAME_KEY, store.getState().game);
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 

@@ -22,3 +22,5 @@ export const questionsSlice = createSlice({
         },
     },
 });
+
+export const { addQuestion, removeQuestion, updateQuestion } = questionsSlice.actions;
