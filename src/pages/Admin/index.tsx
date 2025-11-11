@@ -81,7 +81,9 @@ export const AdminPage = () => {
         {activeTab === "questions" && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-white">Gestión de Preguntas</h2>
+              <h2 className="text-2xl font-bold text-white">
+                Gestión de Preguntas
+              </h2>
               <button
                 onClick={handleOpenAddModal}
                 className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium"
@@ -93,7 +95,8 @@ export const AdminPage = () => {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="mb-4">
                 <p className="text-white/90 text-sm">
-                  Arrastra las preguntas para reordenarlas. Haz clic en "Editar" para modificar una pregunta o "Eliminar" para eliminarla.
+                  Arrastra las preguntas para reordenarlas. Haz clic en "Editar"
+                  para modificar una pregunta o "Eliminar" para eliminarla.
                 </p>
               </div>
               <QuestionsList onEditQuestion={handleEditQuestion} />
@@ -105,7 +108,9 @@ export const AdminPage = () => {
         {activeTab === "teams" && (
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-white">Gestión de Equipos</h2>
+              <h2 className="text-2xl font-bold text-white">
+                Gestión de Equipos
+              </h2>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">

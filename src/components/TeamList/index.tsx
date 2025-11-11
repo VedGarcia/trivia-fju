@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeTeam, updateTeam } from "../../features/game/gameSlice";
 import { getTeamColorByIndex } from "../../utils/teamColors";
 import type { Team } from "../../models/types";
-import type { RootState } from "../../store";
+//import type { RootState } from "../../store";
 
 interface TeamListProps {
   teams: Team[];
@@ -11,7 +11,7 @@ interface TeamListProps {
 
 export const TeamList = ({ teams }: TeamListProps) => {
   const dispatch = useDispatch();
-  const gameTeams = useSelector((state: RootState) => state.game.teams);
+  // const gameTeams = useSelector((state: RootState) => state.game.teams);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
 
@@ -65,7 +65,7 @@ export const TeamList = ({ teams }: TeamListProps) => {
               {editingId === team.id ? (
                 <div className="flex items-center gap-2 flex-1">
                   <div
-                    className="w-4 h-4 rounded-full flex-shrink-0"
+                    className="w-4 h-4 rounded-full shrink-0"
                     style={{ backgroundColor: color.primary }}
                   />
                   <input

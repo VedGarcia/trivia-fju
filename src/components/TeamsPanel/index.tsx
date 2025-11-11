@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { AddTeam } from "../AddTeam";
 import { TeamList } from "../TeamList";
 import { ScoreBoard } from "../ScoreBoard";

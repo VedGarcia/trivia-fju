@@ -7,11 +7,7 @@ interface ScoreBoardProps {
 
 export const ScoreBoard = ({ teams }: ScoreBoardProps) => {
   if (teams.length === 0) {
-    return (
-      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-        <p className="text-white text-center">No hay equipos registrados</p>
-      </div>
-    );
+    return null;
   }
 
   // Ordenar equipos por puntaje (mayor a menor)
@@ -21,11 +17,11 @@ export const ScoreBoard = ({ teams }: ScoreBoardProps) => {
     <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
       <h2 className="text-xl font-bold text-white mb-4">Puntuación</h2>
       <div className="space-y-2">
-        {sortedTeams.map((team, index) => {
+        {sortedTeams.map((team) => {
           // Encontrar el índice original del equipo para obtener su color
-          const originalIndex = teams.findIndex(t => t.id === team.id);
+          const originalIndex = teams.findIndex((t) => t.id === team.id);
           const color = getTeamColorByIndex(originalIndex);
-          
+
           return (
             <div
               key={team.id}
@@ -42,7 +38,9 @@ export const ScoreBoard = ({ teams }: ScoreBoardProps) => {
                 />
                 <span className="text-white font-medium">{team.name}</span>
               </div>
-              <span className="text-white font-bold text-lg">{team.score} pts</span>
+              <span className="text-white font-bold text-lg">
+                {team.score} pts
+              </span>
             </div>
           );
         })}

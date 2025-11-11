@@ -68,7 +68,6 @@ export const GamePage = () => {
   }, [currentQuestionIndex]); // Solo ejecutar cuando cambia la pregunta, NO cuando cambia el equipo activo
 
   // Asegurar que cuando se agregan equipos nuevos, se inicialicen sus selecciones
-  // Pero NO reiniciar las selecciones existentes cuando cambia el equipo activo
   useEffect(() => {
     if (teams.length > 0 && currentQuestion && status === "playing") {
       setTeamSelections((prev) => {
