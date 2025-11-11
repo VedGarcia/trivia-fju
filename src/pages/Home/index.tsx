@@ -18,12 +18,18 @@ export const HomePage = () => {
         </div>
 
         {/* Botón principal para iniciar juego */}
-        <div className="mb-12">
+        <div className="mb-12 flex flex-col gap-2">
           <button
             onClick={() => navigate("/game")}
             className="bg-green-600 hover:bg-green-700 text-white font-bold text-2xl px-12 py-6 rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-4"
           >
             🎮 Iniciar Juego
+          </button>
+          <button
+            onClick={() => navigate("/game")}
+            className="bg-sky-800 hover:bg-cyan-700 text-white font-bold text-2xl px-8 py-6 rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-4"
+          >
+            Añadir equipos y preguntas
           </button>
         </div>
 
