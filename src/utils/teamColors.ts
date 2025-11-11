@@ -17,6 +17,7 @@ export const getTeamColor = (index: number) => {
 export const getTeamColorByIndex = (index: number) => {
   const color = getTeamColor(index);
   return {
+    primary: color.primary,
     bg: color.light,
     border: color.primary,
     text: color.primary,

@@ -20,7 +20,10 @@ export const questionsSlice = createSlice({
             }
             return state;
         },
+        reorderQuestions: (state, action: PayloadAction<Question[]>) => {
+            return action.payload;
+        },
     },
 });
 
-export const { addQuestion, removeQuestion, updateQuestion } = questionsSlice.actions;
+export const { addQuestion, removeQuestion, updateQuestion, reorderQuestions } = questionsSlice.actions;

@@ -47,7 +47,7 @@ export const GamePage = () => {
   useEffect(() => {
     if (currentQuestion && teams.length > 0) {
       // Solo reiniciar selecciones cuando cambia la pregunta, preservar las selecciones actuales
-      setTeamSelections((prev) => {
+      setTeamSelections(() => {
         // Si es una nueva pregunta, reiniciar todas las selecciones
         const newSelections: Record<string, number | null> = {};
         teams.forEach((team) => {
@@ -270,7 +270,7 @@ export const GamePage = () => {
                     <div className="flex flex-wrap gap-2">
                       {teams
                         .filter((team) => questionResults[team.id]?.isCorrect)
-                        .map((team, index) => {
+                        .map((team) => {
                           const color = getTeamColorByIndex(
                             teams.findIndex((t) => t.id === team.id)
                           );
@@ -340,7 +340,7 @@ export const GamePage = () => {
           )}
 
           {/* Header fijo */}
-          <div className="flex-shrink-0 p-4 bg-gradient-to-r from-purple-400 to-sky-300">
+          <div className="shrink-0 p-4 bg-linear-to-r from-purple-400 to-sky-300">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
               <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
                 <p className="text-white font-bold text-lg">
@@ -362,7 +362,7 @@ export const GamePage = () => {
               {/* Columna izquierda: Pregunta y selección */}
               <div className="lg:col-span-2 flex flex-col gap-4 overflow-y-auto">
                 {/* Selector de equipos */}
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <TeamSelector
                     teams={teams}
                     selectedTeamId={activeTeamId}
@@ -372,7 +372,7 @@ export const GamePage = () => {
 
                 {/* Pregunta y opciones de respuesta */}
                 <div className="flex-1 bg-white rounded-lg shadow-lg p-6 flex flex-col">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-4 flex-shrink-0">
+                  <h2 className="text-2xl font-bold text-gray-800 mb-4 shrink-0">
                     {currentQuestion.text}
                   </h2>
 
@@ -382,9 +382,6 @@ export const GamePage = () => {
                         activeTeamSelection === index;
                       const teamsForThisOption = getTeamsForOption(index);
                       const isCorrectOption = index === correctAnswerIndex;
-                      const activeTeamIndex = teams.findIndex(
-                        (t) => t.id === activeTeamId
-                      );
 
                       return (
                         <div
@@ -491,7 +488,7 @@ export const GamePage = () => {
 
                   {/* Mensaje cuando el equipo activo no ha seleccionado */}
                   {activeTeamId && activeTeamSelection === null && (
-                    <div className="flex-shrink-0 mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-md">
+                    <div className="shrink-0 mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-md">
                       <p className="text-yellow-800 text-sm text-center">
                         Selecciona una opción para el equipo activo
                       </p>
@@ -501,7 +498,7 @@ export const GamePage = () => {
 
                 {/* Botón de confirmar todas las respuestas */}
                 {allTeamsSelected && !showResults && (
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <button
                       onClick={handleConfirmAllAnswers}
                       className="w-full bg-green-600 text-white py-4 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-bold text-lg shadow-lg"
@@ -513,7 +510,7 @@ export const GamePage = () => {
               </div>
 
               {/* Columna derecha: ScoreBoard */}
-              <div className="lg:col-span-1 flex-shrink-0">
+              <div className="lg:col-span-1 shrink-0">
                 <div className="sticky top-4 space-y-4">
                   <ScoreBoard teams={teams} />
 
