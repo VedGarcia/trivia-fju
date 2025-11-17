@@ -1,5 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { GameState, Team, Question } from "../../models/types";
+import { clearState } from "../../services/persistence";
+import type { AppDispatch } from "../../store";
+
+const GAME_KEY = 'game'
 
 export const initialState: GameState = {
     status: 'idle',
@@ -11,6 +15,12 @@ export const initialState: GameState = {
     activeTeamId: null,
     activeAnswerOptionId: null,
 };
+
+export const resetGameState = () => (dispatch: AppDispatch) => {
+    clearState(GAME_KEY);
+
+    dispatch(gameSlice.actions.resetGame());
+}
 
 export const gameSlice = createSlice({
     name: 'game',
@@ -63,7 +73,7 @@ export const gameSlice = createSlice({
                 team.isCorrect = action.payload.isCorrect;
             }
         },
-        resetGame: (state) => {
+        resetGame: () => {
             return initialState;
         },
         resetScores: (state) => {

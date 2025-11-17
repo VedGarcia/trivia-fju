@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Layout } from "../../components/Layout";
 import { Modal } from "../../components/Modal";
 import { AddQuestion } from "../../components/AddQuestion";
@@ -6,6 +7,7 @@ import { EditQuestion } from "../../components/EditQuestion";
 import { QuestionsList } from "../../components/QuestionsList";
 import { TeamsPanel } from "../../components/TeamsPanel";
 import type { Question } from "../../models/types";
+import { resetGame, resetScores } from "../../features/game/gameSlice";
 
 type Tab = "questions" | "teams";
 
@@ -14,6 +16,8 @@ export const AdminPage = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+
+  const dispatch = useDispatch();
 
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
@@ -41,6 +45,29 @@ export const AdminPage = () => {
     handleCloseEditModal();
   };
 
+  const handleResetGame = () => {
+    if (
+      window.confirm(
+        "¿Estas seguro que deseas REINICIAR el juego completamente? Se borrará todo el progreso de la y los equipos"
+      )
+    ) {
+      dispatch(resetGame());
+      alert(
+        "Juego reiniciado con éxito. ¡Los datos guardados han sido borrados!"
+      );
+    }
+  };
+
+  const handleResetScore = () => {
+    if (
+      window.confirm(
+        "¿Estas seguro que deseas REINICIAR la partida? Se borrará todo el progreso "
+      )
+    ) {
+      dispatch(resetScores());
+      alert("Partida reiniciada con éxito.");
+    }
+  };
   return (
     <Layout>
       <div className="p-6 max-w-7xl mx-auto">
@@ -51,6 +78,21 @@ export const AdminPage = () => {
           <p className="text-white/80">
             Gestiona las preguntas y equipos del juego
           </p>
+          <div className="flex py-2 gap-2 justify-end">
+            <button
+              onClick={handleResetGame}
+              className="rounded p-2 bg-sky-600 focus:outline-none focus:ring-2 hover:bg-red-600 text-white font-bold"
+            >
+              ⚠️ REINICIO
+            </button>
+
+            <button
+              className="rounded p-2 bg-sky-600 hover:bg-amber-600 text-white font-bold"
+              onClick={handleResetScore}
+            >
+              🔄 Reiniciar Partida
+            </button>
+          </div>
         </div>
 
         {/* Tabs */}

@@ -26,10 +26,10 @@ export const HomePage = () => {
             🎮 Iniciar Juego
           </button>
           <button
-            onClick={() => navigate("/game")}
+            onClick={() => navigate("/admin")}
             className="bg-sky-800 hover:bg-cyan-700 text-white font-bold text-2xl px-8 py-6 rounded-xl shadow-2xl transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-4"
           >
-            Añadir equipos y preguntas
+            Preguntas y equipos
           </button>
         </div>
 
@@ -42,8 +42,8 @@ export const HomePage = () => {
         <div className="mt-12 text-center max-w-2xl">
           <p className="text-white/80 text-sm md:text-base">
             Crea preguntas, forma equipos y compite en este emocionante juego de
-            trivia. Gestiona las preguntas desde el panel de administración y
-            disfruta del juego con tus amigos.
+            trivia. Gestiona las preguntas desde el panel de administración o
+            haciendo click en preguntas y equipos.
           </p>
         </div>
       </div>
